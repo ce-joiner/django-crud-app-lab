@@ -16,12 +16,13 @@
     <header>
       <div class="header-logo-container">
     <a href="/" class="logo-link">
-      <img src="{% static 'images/bings.png' %}" alt="The Tea Collector Logo" />
+      {% comment %} <img src="{% static 'images/bings.png' %}" alt="The Tea Collector Logo" /> {% endcomment %}
       <span class="site-title">The Tea Collector</span>
     </a>
   </div>
       <nav>
         <ul>
+          <li><a href="/teas">All Teas</a></li>
           <li><a href="/about">About</a></li>
         </ul>
       </nav>
