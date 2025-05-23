@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/home.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<section class="hero-container" style="background-image: url('{% static 'images/bings.png' %}');">
+  <div class="hero-content">
+    <h1 class="hero-title">The Tea Collector</h1>
+  </div>
+</section>
+
+{% endblock %}

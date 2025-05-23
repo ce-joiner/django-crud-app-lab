@@ -1,0 +1,40 @@
+.hero-container {
+  height: 100vh; /* Full viewport height */
+  background-size: cover; /* Covers the entire container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 400px; /* Fallback minimum height */
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 3; /* Higher than overlay */
+  position: relative;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); 
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Add background to text for readability */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Dark overlay for better text readability */
+.hero-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Lighter overlay */
+  z-index: 2;
+}
