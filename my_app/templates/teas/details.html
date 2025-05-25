@@ -23,6 +23,11 @@
     <h2>{{ tea.type }} tea</h2>
     <h3>{{ tea.origin }}</h3>
     <p>{{ tea.description }}</p>
+
+    <div class="tea-actions">
+      <a href="{% url 'tea_update' tea.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'tea_delete' tea.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 {% endblock %}

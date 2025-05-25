@@ -9,7 +9,7 @@
 <section class="card-container">
   {% for tea in teas %}
   <div class="card">
-    <a href="{% url 'tea_detail' tea.id %}">
+    <a href="{% url 'tea-detail' tea.id %}">
       <div class="card-content">
         <div class="card-img-container">
           {% if tea.image %}

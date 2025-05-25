@@ -37,3 +37,11 @@ class TeaCreate(CreateView):
     fields = '__all__'  # Use all fields from the Tea model
     # success_url = '/teas/'  # Redirect to the tea index page after creation
    
+class TeaUpdate(UpdateView):
+    model = Tea
+    fields = '__all__'  # Use all fields from the Tea model
+
+class TeaDelete(DeleteView):
+    model = Tea
+    success_url = '/teas/'  
+   

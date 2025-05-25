@@ -6,8 +6,11 @@
 {% block content %}
 
 <div class="page-header">
+    {% if tea %}
+    <h1>Edit {{ tea.name }}</h1>
+    {% else %}
   <h1>Add a Tea</h1>
-
+    {% endif %}
 </div>
 
 <form action="" method="post" class="form-container" enctype="multipart/form-data">
