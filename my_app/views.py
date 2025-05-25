@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Tea
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.http import HttpResponse
 
 def home(request):
@@ -26,3 +27,13 @@ def about(request):
 def tea_index(request):
     teas = Tea.objects.all()  # Fetch all tea objects from the database
     return render(request, 'teas/index.html', {'teas': teas})
+
+def tea_detail(request, tea_id):
+    tea = Tea.objects.get(id=tea_id)  # Fetch the specific tea object by its ID
+    return render(request, 'teas/details.html', {'tea': tea})
+
+class TeaCreate(CreateView):
+    model = Tea
+    fields = '__all__'  # Use all fields from the Tea model
+    # success_url = '/teas/'  # Redirect to the tea index page after creation
+   

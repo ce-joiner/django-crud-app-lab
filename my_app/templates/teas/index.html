@@ -1,8 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
-<link
-  rel="stylesheet"
-  href="{% static 'css/teas/tea_index.css' %}"
-/>
+<link rel="stylesheet" href="{% static 'css/teas/tea_index.css' %}" />
 {% endblock %} {% block content %}
 
 <section class="page-header">
@@ -12,21 +9,30 @@
 <section class="card-container">
   {% for tea in teas %}
   <div class="card">
-    <div class="card-content">
-      <div class="card-img-container">
-        <img
-          src="{% static tea.image %}"
-          alt={{tea.name}}
-        />
+    <a href="{% url 'tea_detail' tea.id %}">
+      <div class="card-content">
+        <div class="card-img-container">
+          {% if tea.image %}
+          {% if 'images/' in tea.image.name %}
+          <!-- For old static file paths -->
+          <img src="{% static tea.image %}" alt="{{ tea.name }}" />
+          {% else %}
+          <!-- For new uploaded files -->
+          <img src="{{ tea.image.url }}" alt="{{ tea.name }}" />
+          {% endif %}
+          {% else %}
+          <img src="{% static 'images/default-tea.png' %}" alt="{{ tea.name }}" />
+          {% endif %}
+        </div>
+        <h2 class="card-title">{{ tea.name }}</h2>
+
+        <p>{{ tea.type }} tea</p>
+
+        <p>{{ tea.origin }}</p>
+
+        <p><small>{{ tea.description }}</small></p>
       </div>
-      <h2 class="card-title">{{ tea.name }}</h2>
-      
-      <p>{{ tea.type }} tea</p>
-      
-      <p>{{ tea.origin }}</p>
-      
-      <p><small>{{ tea.description }}</small></p>
-    </div>
+    </a>
   </div>
   {% endfor %}
 </section>

@@ -2,34 +2,38 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="" />
-    <title>Tea Collector</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% block head %} 
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="" />
+  <title>Tea Collector</title>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  {% block head %}
+  {% endblock %}
+</head>
+
+<body>
+  <header>
+    <div class="header-logo-container">
+      <a href="/" class="logo-link">
+        {% comment %} <img src="{% static 'images/bings.png' %}" alt="The Tea Collector Logo" /> {% endcomment %}
+        <span class="site-title">The Tea Collector</span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'tea_index' %}">All Teas</a></li>
+        <li><a href="{% url 'tea_create' %}">Add Tea</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block content %}
     {% endblock %}
-  </head>
-  <body>
-    <header>
-      <div class="header-logo-container">
-    <a href="/" class="logo-link">
-      {% comment %} <img src="{% static 'images/bings.png' %}" alt="The Tea Collector Logo" /> {% endcomment %}
-      <span class="site-title">The Tea Collector</span>
-    </a>
-  </div>
-      <nav>
-        <ul>
-          <li><a href="/teas">All Teas</a></li>
-          <li><a href="/about">About</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-     {% block content %} 
-     {% endblock %}
-     </main>
-  </body>
+  </main>
+</body>
+
 </html>

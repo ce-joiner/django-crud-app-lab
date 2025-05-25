@@ -5,4 +5,8 @@ urlpatterns = [
      path('', views.home, name='home'),
      path('about/', views.about, name='about'), 
      path('teas/', views.tea_index, name='tea_index'),
+     path('teas/<int:tea_id>/', views.tea_detail, name='tea-detail'),
+     path('teas/<int:tea_id>/', views.tea_detail, name='tea_detail'),
+     path('teas/create/', views.TeaCreate.as_view(), name='tea_create'),
 ]
+

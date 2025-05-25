@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/teas/tea-details.css' %}" />
+{% endblock %}
+{% block content %}
+<section class="tea-container">
+  <div class="tea-img">
+    {% if tea.image %}
+    {% if 'images/' in tea.image.name %}
+    <!-- For old static file paths -->
+    <img src="{% static tea.image %}" alt="{{ tea.name }}" />
+    {% else %}
+    <!-- For new uploaded files -->
+    <img src="{{ tea.image.url }}" alt="{{ tea.name }}" />
+    {% endif %}
+    {% else %}
+    <img src="{% static 'images/default-tea.png' %}" alt="{{ tea.name }}" />
+    {% endif %}
+  </div>
+  <div class="tea-details">
+    <h1>{{ tea.name }}</h1>
+    <h2>{{ tea.type }} tea</h2>
+    <h3>{{ tea.origin }}</h3>
+    <p>{{ tea.description }}</p>
+  </div>
+</section>
+{% endblock %}
