@@ -1,0 +1,47 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/teaware/teaware-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<section class="teaware-container">
+  <div class="teaware-img">
+    {% if teaware.image %}
+      <img src="{{ teaware.image.url }}" alt="{{ teaware.name }}" />
+    {% else %}
+      <img src="{% static 'images/gaiwan.png' %}" alt="{{ teaware.name }}" />
+    {% endif %}
+  </div>
+  <div class="teaware-details">
+    <h1>{{ teaware.name }}</h1>
+    <h2>{{ teaware.get_type_display }}</h2>
+    <h3>{{ teaware.material }}</h3>
+    {% if teaware.capacity %}
+      <p>{{ teaware.capacity }}ml capacity</p>
+    {% endif %}
+
+    <div class="teaware-actions">
+      <a href="{% url 'teaware_update' teaware.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'teaware_delete' teaware.id %}" class="btn danger">Delete</a>
+    </div>
+  </div>
+</section>
+
+<!-- Related Teas Section -->
+<section class="related-teas">
+  <h2>Used with these teas:</h2>
+  {% if teaware.teas.all %}
+    <div class="tea-list">
+      {% for tea in teaware.teas.all %}
+        <div class="tea-item">
+          <a href="{% url 'tea-detail' tea.id %}">{{ tea.name }}</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Not yet used with any teas.</p>
+  {% endif %}
+</section>
+
+{% endblock %}

@@ -13,5 +13,7 @@ urlpatterns = [
      path('teaware/create', views.TeawareCreate.as_view(), name='teaware_create'),
      path('teaware/<int:pk>/', views.TeawareDetail.as_view(), name='teaware_detail'),
      path('teaware/', views.TeawareList.as_view(), name='teaware-index'),
+     path('teaware/<int:pk>/update/', views.TeawareUpdate.as_view(), name='teaware_update'),
+     path('teaware/<int:pk>/delete/', views.TeawareDelete.as_view(), name='teaware_delete'),
 ]
 

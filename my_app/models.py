@@ -3,6 +3,7 @@ from django.urls import reverse
 
 # Create your models here.
 
+
 class Tea(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
@@ -49,6 +50,9 @@ class Teaware(models.Model):
     
     def __str__(self):
         return f'{self.name} ({self.get_type_display()})'
+    
+    def get_absolute_url(self):
+        return reverse('teaware_detail', kwargs={'pk': self.id})
     
     class Meta:
         ordering = ['name']

@@ -37,7 +37,7 @@ def tea_detail(request, tea_id):
 
 class TeaCreate(CreateView):
     model = Tea
-    fields = '__all__'  # Use all fields from the Tea model
+    fields = [field.name for field in Tea._meta.fields if field.name != 'teaware']  # Exclude 'teaware' field from the form
     # success_url = '/teas/'  # Redirect to the tea index page after creation
    
 class TeaUpdate(UpdateView):
@@ -67,3 +67,10 @@ class TeawareDetail(DetailView):
 class TeawareList(ListView):
     model = Teaware
    
+class TeawareUpdate(UpdateView):
+    model = Teaware
+    fields = '__all__'  
+
+class TeawareDelete(DeleteView):
+    model = Teaware
+    success_url = '/teaware/'  # Redirects to teaware list after deletion

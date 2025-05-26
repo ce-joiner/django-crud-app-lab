@@ -21,6 +21,7 @@
           <img src="{% static 'images/gaiwan.png' %}" alt="{{ teaware.name }}" />
         {% endif %}
       </div>
+      <a href="{% url 'teaware_detail' teaware.id %}">
       <div class="card-content">
         <h2 class="card-title">{{ teaware.name }}</h2>
         <p>{{ teaware.get_type_display }}</p>
@@ -29,6 +30,7 @@
           <p>{{ teaware.capacity }}ml capacity</p>
         {% endif %}
       </div>
+      </a>
     </div>
   {% endfor %}
 </section>

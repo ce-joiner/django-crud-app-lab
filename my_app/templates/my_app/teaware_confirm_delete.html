@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/teaware/teaware-delete.css' %}" />
+{% endblock %}
+{% block content %}
+
+<div class="page-header">
+    <h1>Delete {{ teaware.name }}?</h1>
+    {% if teaware.image %}
+    <img src="{{ teaware.image.url }}" alt="{{ teaware.name }}" />
+    {% else %}
+    <img src="{% static 'images/gaiwan.png' %}" alt="{{ teaware.name }}" />
+    {% endif %}
+</div>
+<h2>Are you sure you want to delete {{ teaware.name }}?</h2>
+
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    <a href="{% url 'teaware_detail' teaware.id %}" class="btn secondary"> Cancel </a>
+    <button type="submit" class="btn danger">Yes - Delete!</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,123 @@
+.teaware-container {
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.teaware-img {
+  width: 50%;
+  max-width: 250px;
+  margin-bottom: 20px;
+}
+
+.teaware-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.teaware-details {
+  width: 98%;
+  text-align: center;
+}
+
+.teaware-details h1 {
+  font-size: 2.5rem;
+  margin: 15px 0 3px;
+}
+
+.teaware-details h2 {
+  font-size: 2rem;
+  margin: 0 0 10px;
+}
+
+.teaware-details h3 {
+  margin: 20px 0 10px;
+  font-size: 1.5rem;
+}
+
+.teaware-details p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.teaware-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.teaware-actions .btn {
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.btn.warn {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn.danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.related-teas {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.related-teas h2 {
+  margin-bottom: 15px;
+}
+
+.tea-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tea-item {
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.tea-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Media query for larger screens - side by side layout */
+@media only screen and (min-width: 768px) {
+  .teaware-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .teaware-img {
+    width: 50%;
+    max-width: 250px;
+    margin-right: 25px;
+    margin-bottom: 0;
+  }
+
+  .teaware-details {
+    text-align: left;
+  }
+
+  .teaware-actions {
+    justify-content: flex-start;
+  }
+}
