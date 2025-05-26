@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Tea
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import BrewingForm
 # from django.http import HttpResponse
 
 def home(request):
@@ -30,7 +31,8 @@ def tea_index(request):
 
 def tea_detail(request, tea_id):
     tea = Tea.objects.get(id=tea_id)  # Fetch the specific tea object by its ID
-    return render(request, 'teas/details.html', {'tea': tea})
+    brewing_form = BrewingForm()  # Create an instance of the BrewingForm
+    return render(request, 'teas/details.html', {'tea': tea, 'brewing_form': brewing_form})
 
 class TeaCreate(CreateView):
     model = Tea

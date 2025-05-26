@@ -30,4 +30,48 @@
     </div>
   </div>
 </section>
+<!-- Brewing Records Section -->
+<div class="brewing-container">
+  <section class="brewing-sessions">
+    <div class="subsection-title">
+  <h2>Brewing Sessions</h2>
+      <img
+        src="{% static 'images/brewing1.png' %}"
+        alt="A tea cup"
+      />
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Temperature</th>
+          <th>Steeping Time</th>
+          <th>Tea Amount</th>
+          <th>Water Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for brewing in tea.brewing_set.all %}
+          <tr>
+            <td>{{ brewing.date }}</td>
+            <td>{{ brewing.temperature }}°F</td>
+            <td>{{ brewing.steeping_time }}</td>
+            <td>{{ brewing.amount }}g</td>
+            <td>{{ brewing.water_amount }}ml</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Add a new brewing session</h3>
+    <form method="post" class="subsection-content" autocomplete="off">
+      {% csrf_token %}
+      {{ brewing_form.as_p }}
+      <button type="submit" class="btn submit">Add Brewing Session</button>
+    </form>
+  </section>
+</div>
 {% endblock %}

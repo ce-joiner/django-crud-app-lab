@@ -15,3 +15,17 @@ class Tea(models.Model):
 
     def get_absolute_url(self):
         return reverse('tea_detail', kwargs={'tea_id': self.id})
+    
+class Brewing(models.Model):
+    tea = models.ForeignKey(Tea, on_delete=models.CASCADE)
+    date = models.DateField('Brewing Date')
+    temperature = models.IntegerField(help_text='Temperature in Fahrenheit')
+    steeping_time = models.CharField(max_length=20)  # e.g., "3 minutes"
+    amount = models.IntegerField(help_text='Amount in grams')
+    water_amount = models.IntegerField(help_text='Water amount in ml')
+
+    def __str__(self):
+        return f'{self.tea.name} - {self.temperature}°F for {self.steeping_time}'
+    
+    class Meta:
+        ordering = ['-date']
