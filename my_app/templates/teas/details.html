@@ -75,5 +75,56 @@
       <button type="submit" class="btn submit">Add Brewing Session</button>
     </form>
   </section>
+
+  <section class="teaware">
+  <div class="subsection-title">
+    <h2>Teaware</h2>
+    <img src="{% static 'images/gaiwan.png' %}" alt="Teaware" />
+  </div>
+
+<!-- Current Teaware -->
+    {% if tea.teaware.all %}
+      <div class="current-teaware">
+        <h3>Currently Used With:</h3>
+        <div class="teaware-list">
+          {% for item in tea.teaware.all %}
+            <div class="teaware-item">
+              <span>{{ item.name }} ({{ item.get_type_display }})</span>
+               <form method="post" action="{% url 'remove-teaware' tea.id item.id %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn small danger">Remove</button>
+              </form> 
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    
+    <!-- Available Teaware -->
+    <div class="available-teaware">
+      <h3>Add Teaware:</h3>
+      {% if available_teaware %}
+        <div class="teaware-grid">
+          {% for item in available_teaware %}
+            <div class="teaware-card">
+              <div class="teaware-info">
+                <h4>{{ item.name }}</h4>
+                <p>{{ item.get_type_display }} - {{ item.material }}</p>
+                {% if item.capacity %}
+                  <p>{{ item.capacity }}ml</p>
+                {% endif %}
+              </div>
+              <form action="{% url 'associate-teaware' tea.id item.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn small">Add to Tea</button>
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>All available teaware is already associated with this tea.</p>
+      {% endif %}
+    </div>
+  </section>
 </div>
 {% endblock %}

@@ -32,8 +32,15 @@ def tea_index(request):
 
 def tea_detail(request, tea_id):
     tea = Tea.objects.get(id=tea_id)  # Fetch the specific tea object by its ID
+    teaware = tea.teaware.all()  # Get all teaware associated with this tea
+    available_teaware = Teaware.objects.exclude(teas=tea)  # Get teaware NOT associated with this tea
     brewing_form = BrewingForm()  # Create an instance of the BrewingForm
-    return render(request, 'teas/details.html', {'tea': tea, 'brewing_form': brewing_form})
+    return render(request, 'teas/details.html', {
+        'tea': tea, 
+        'teaware': teaware, 
+        'available_teaware': available_teaware,  # Add this line
+        'brewing_form': brewing_form
+    })
 
 class TeaCreate(CreateView):
     model = Tea
@@ -74,3 +81,12 @@ class TeawareUpdate(UpdateView):
 class TeawareDelete(DeleteView):
     model = Teaware
     success_url = '/teaware/'  # Redirects to teaware list after deletion
+
+def associate_teaware(request, tea_id, teaware_id):
+    # Note that you can pass a toy's id instead of the whole object
+    Tea.objects.get(id=tea_id).teaware.add(teaware_id)
+    return redirect('tea-detail', tea_id=tea_id)  # Redirect to the tea detail page after association
+
+def remove_teaware(request, tea_id, teaware_id):
+    Tea.objects.get(id=tea_id).teaware.remove(teaware_id)  # Remove the association between the tea and teaware
+    return redirect('tea-detail', tea_id=tea_id)  # Redirect to the tea detail page after removal

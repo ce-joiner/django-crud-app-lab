@@ -12,11 +12,10 @@
     margin-bottom: 20px;
 }
 
-/* Add styling for the actual img element */
 .tea-img img {
   width: 100%;
   height: auto;
-  border-radius: 8px; /* Fixed value instead of CSS variable */
+  border-radius: 8px;
   object-fit: cover;
 }
 
@@ -27,7 +26,7 @@
 .tea-actions {
   margin-top: 15px;
   display: flex;
-  gap: 10px; /* Space between buttons */
+  gap: 10px;
 }
 
 .tea-actions .btn {
@@ -38,165 +37,188 @@
   display: inline-block;
 }
 
+/* Updated brewing container for side-by-side layout */
 .brewing-container {
     display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Make sections smaller and flexible */
+.brewing-container > section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
-    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    background: white;
 }
 
 .subsection-title {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
 }
 
-.subsection-content {
-    margin: 0 8px;
-}
-
-.toy-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.color-block {
-    opacity: 0.8;
-    height: 25px;
-    width: 25px;
-    margin-right: 10px;
-}
-
-.unfed,
-.fed,
-.no-toys,
-.all-toys {
+.subsection-title h2 {
+    font-size: 1.8rem;
     margin: 0;
-    font-weight: bold;
-}
-
-.unfed,
-.no-toys {
-    color: var(--danger);
-}
-
-.fed,
-.all-toys {
-    color: var(--submit);
-}
-
-.tea-details h1 {
-    font-size: 2.5rem;;
-    margin: 15px 0 3px;
-}
-
-.tea-details h2 {
-    font-size: 2rem;
-    margin: 0 0 10px;
-}
-
-.tea-details h3 {
-    margin: 20px 0 10px;
-    font-size: 1.5rem;
-}
-
-.tea-details p {
-    font-size: 1rem;
-    margin: 5px 0;
-}
-
-.brewing-container>section {
-    width: 80%;
-    min-width: 360px;
-    border: var(--borders);
-    border-radius: var(--card-border-radius);
-    padding: 10px;
-    box-shadow: var(--card-box-shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 20px;
 }
 
 .subsection-title img {
-    height: 42px;
-    margin-left: 8px;
+    height: 35px;
+    margin-left: 10px;
 }
 
-.subsection-title img:first-of-type {
-    margin-left: 16px;
-}
-
-.brewing-sessions h2,
-.toys h2 {
-    font-size: 3.2rem;
-    margin: 0;
-}
-
-.brewing-sessions h3,
-.toys h3 {
-    font-size: var(--font-xl);
-    margin: 10px 0;
-}
-
-.subsection-content p,
-.subsection-content input,
-.subsection-content select {
-    font-size: var(--font-l);
-}
-
-.subsection-content input,
-.subsection-content select {
-    margin-left: 5px;
-    padding: 3px;
-}
-
+/* Brewing sessions table styling */
 .brewing-sessions table {
-    width: calc(100% - 16px);
+    width: 100%;
     text-align: left;
     border-collapse: collapse;
-    margin: 0 8px;
+    margin-bottom: 20px;
 }
 
 .brewing-sessions td {
     padding: 8px 5px;
-    font-size: var(--font-reg);
+    font-size: 0.9rem;
 }
 
 .brewing-sessions th {
-    font-size: var(--font-l);
-    padding: 5px 5px 0;
-    border-bottom: rgb(36, 116, 248) solid 2px;
+    font-size: 1rem;
+    padding: 8px 5px;
+    border-bottom: #3498db solid 2px;
+    background-color: #f8f9fa;
 }
 
 .brewing-sessions tr:nth-child(even) {
-    background-color: #f3f3fd;
+    background-color: #f8f9fa;
 }
 
-.toy-container p {
-    margin: 12px 0;
+/* Add brewing form styling */
+.brewing-sessions h3 {
+    font-size: 1.2rem;
+    margin: 15px 0 10px 0;
+    color: #2c3e50;
 }
 
-.toy-container a {
-    text-decoration: none;
-    color: #111;
+.subsection-content {
+    margin: 0;
 }
 
-.toy-container .btn {
-    padding: 3px 10px;
-    margin-left: 10px;
+.subsection-content p {
+    margin: 8px 0;
 }
 
-#file-input {
-    overflow: hidden;
-    position: absolute;
-    width: 0.1px;
-    height: 0.1px;
+.subsection-content input,
+.subsection-content select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-#file-name {
-    margin-bottom: 10px;
+.btn.submit {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn.submit:hover {
+    background-color: #229954;
+}
+
+/* Teaware section styling */
+.current-teaware {
+    margin-bottom: 20px;
+}
+
+.current-teaware h3,
+.available-teaware h3 {
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.teaware-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.teaware-item {
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+}
+
+.teaware-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.teaware-card {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.teaware-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+}
+
+.teaware-info p {
+    margin: 2px 0;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.btn.small {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+}
+
+.btn.small:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive design */
+@media only screen and (max-width: 768px) {
+    .brewing-container {
+        flex-direction: column;
+    }
+    
+    .brewing-container > section {
+        min-width: auto;
+        max-width: none;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -216,20 +238,14 @@
     .tea-details {
         text-align: left;
     }
-
-    .feedings-toy-container {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-start;
-    }
-
-    .feedings-toy-container>section {
-        width: 45%;
-    }
 }
 
 @media only screen and (min-width: 1024px) {
     .brewing-container {
         padding: 0 40px;
+    }
+    
+    .teaware-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
