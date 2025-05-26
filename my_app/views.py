@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from .models import Tea
+from django.shortcuts import render, redirect
+from .models import Tea, Teaware
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import BrewingForm
+from django.views.generic import ListView, DetailView
 # from django.http import HttpResponse
 
 def home(request):
@@ -46,4 +47,23 @@ class TeaUpdate(UpdateView):
 class TeaDelete(DeleteView):
     model = Tea
     success_url = '/teas/'  
+   
+def add_brewing(request, tea_id):
+    form = BrewingForm(request.POST)  # Create a form instance with the submitted data
+    if form.is_valid():  # Check if the form is valid
+        new_brewing = form.save(commit=False)  # Create a Brewing instance without saving to the database yet
+        new_brewing.tea_id = tea_id  # Associate the brewing with the specific tea
+        new_brewing.save()  # Save the brewing instance to the database
+    return redirect('tea-detail', tea_id=tea_id)  # Redirect to the tea detail page
+
+class TeawareCreate(CreateView):
+    model = Teaware
+    fields = '__all__'  # Use all fields from the Teaware model
+    success_url = '/teaware/'  # Redirects to teaware list
+    
+class TeawareDetail(DetailView):
+    model = Teaware
+   
+class TeawareList(ListView):
+    model = Teaware
    

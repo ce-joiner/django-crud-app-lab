@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/teaware/teaware-index.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>All Teaware</h1>
+  <img src="{% static 'images/gaiwan.png' %}" alt="A porcelain Gaiwan" />
+  {% comment %} <a href="{% url 'teaware-create' %}" class="btn">Add Teaware</a> {% endcomment %}
+</section>
+
+<section class="card-container">
+  {% for teaware in teaware_list %}
+    <div class="card">
+      <div class="card-img-container">
+        {% if teaware.image %}
+          <img src="{{ teaware.image.url }}" alt="{{ teaware.name }}" />
+        {% else %}
+          <img src="{% static 'images/gaiwan.png' %}" alt="{{ teaware.name }}" />
+        {% endif %}
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">{{ teaware.name }}</h2>
+        <p>{{ teaware.get_type_display }}</p>
+        <p>{{ teaware.material }}</p>
+        {% if teaware.capacity %}
+          <p>{{ teaware.capacity }}ml capacity</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

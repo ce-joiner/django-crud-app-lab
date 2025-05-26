@@ -29,3 +29,26 @@ class Brewing(models.Model):
     
     class Meta:
         ordering = ['-date']
+
+class Teaware(models.Model):
+    TEAWARE_TYPES = [
+        ('teapot', 'Teapot'),
+        ('gaiwan', 'Gaiwan'),
+        ('cup', 'Tea Cup'),
+        ('infuser', 'Tea Infuser'),
+        ('dripper', 'Tea Dripper'),
+        ('kettle', 'Kettle'),
+        ('tray', 'Tea Tray'),
+    ]
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=20, choices=TEAWARE_TYPES)
+    material = models.CharField(max_length=50)  # e.g., "Clay", "Porcelain", "Glass"
+    capacity = models.IntegerField(help_text='Capacity in ml', null=True, blank=True)
+    image = models.ImageField(upload_to='teaware/', blank=True) 
+    teas = models.ManyToManyField(Tea, blank=True, related_name='teaware')
+    
+    def __str__(self):
+        return f'{self.name} ({self.get_type_display()})'
+    
+    class Meta:
+        ordering = ['name']

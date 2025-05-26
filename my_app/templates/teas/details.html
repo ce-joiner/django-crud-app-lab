@@ -67,7 +67,9 @@
     <br>
     <br>
     <h3>Add a new brewing session</h3>
-    <form method="post" class="subsection-content" autocomplete="off">
+    <form 
+    action="{% url 'add-brewing' tea.id %}"
+    method="post" class="subsection-content" autocomplete="off">
       {% csrf_token %}
       {{ brewing_form.as_p }}
       <button type="submit" class="btn submit">Add Brewing Session</button>

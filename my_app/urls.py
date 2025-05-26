@@ -9,5 +9,9 @@ urlpatterns = [
      path('teas/create/', views.TeaCreate.as_view(), name='tea_create'),
      path('teas/<int:pk>/update/', views.TeaUpdate.as_view(), name='tea_update'),
      path('teas/<int:pk>/delete/', views.TeaDelete.as_view(), name='tea_delete'),
+     path('teas/<int:tea_id>/brewing/', views.add_brewing, name='add-brewing'),
+     path('teaware/create', views.TeawareCreate.as_view(), name='teaware_create'),
+     path('teaware/<int:pk>/', views.TeawareDetail.as_view(), name='teaware_detail'),
+     path('teaware/', views.TeawareList.as_view(), name='teaware-index'),
 ]
 
