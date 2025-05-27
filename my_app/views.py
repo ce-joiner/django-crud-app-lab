@@ -3,6 +3,8 @@ from .models import Tea, Teaware
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import BrewingForm
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.views import LoginView
+
 # from django.http import HttpResponse
 
 def home(request):
@@ -90,3 +92,8 @@ def associate_teaware(request, tea_id, teaware_id):
 def remove_teaware(request, tea_id, teaware_id):
     Tea.objects.get(id=tea_id).teaware.remove(teaware_id)  # Remove the association between the tea and teaware
     return redirect('tea-detail', tea_id=tea_id)  # Redirect to the tea detail page after removal
+
+
+# This class-based view uses Django's built-in LoginView to handle user authentication.
+class Home(LoginView):
+    template_name = 'home.html'

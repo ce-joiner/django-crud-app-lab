@@ -1,9 +1,10 @@
 .hero-container {
   height: 100vh; /* Full viewport height */
   background-size: cover; /* Covers the entire container */
-  background-position: center; /* Centers the image */
+  background-position: center; 
   background-repeat: no-repeat;
   display: flex;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
   position: relative;
@@ -14,15 +15,19 @@
   text-align: center;
   z-index: 3; /* Higher than overlay */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 100%; /* Full width of container */
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 4rem; 
   font-weight: bold;
   color: #ffffff;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); 
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Add background to text for readability */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
 }
@@ -35,6 +40,83 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* Lighter overlay */
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 2;
+}
+
+/* Login form styling */
+ .login {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 12px 20px; 
+  border-radius: 8px;
+  color: white;
+  max-width: 280px; 
+  width: 100%;
+  margin-top: 20px;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.login h1 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 1.3rem; /* Smaller heading */
+  margin-bottom: 10px; /* Reduced margin */
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.login label {
+  color: #ffffff;
+  display: block;
+  margin-bottom: 2px; /* Reduced margin */
+  font-weight: 500;
+  font-size: 0.85rem; /* Smaller label text */
+}
+
+.login input[type="text"], 
+.login input[type="password"] {
+  width: 100%;
+  padding: 6px; /* Smaller padding */
+  margin-bottom: 10px; /* Reduced margin */
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem; /* Smaller input text */
+}
+
+.login .btn.submit {
+  background-color: #2e7d32; /* Dark green */
+  color: white;
+  padding: 6px 10px; /* Smaller padding */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem; /* Smaller button text */
+  display: block;
+  width: 100%;
+  margin-top: 6px; /* Reduced margin */
+  transition: background-color 0.2s;
+}
+
+.login .btn.submit:hover {
+  background-color: #1b5e20; /* Even darker on hover */
+}
+
+/* Add help text styling */
+.login .helptext {
+  display: block;
+  font-size: 0.7rem; /* Smaller help text */
+  color: #ddd;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+/* Fix error styling */
+.login ul.errorlist {
+  color: #ffccbc;
+  margin: 0 0 8px 0;
+  padding-left: 18px;
+  font-size: 0.75rem; /* Smaller error text */
 }
