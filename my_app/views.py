@@ -48,6 +48,14 @@ class TeaCreate(CreateView):
     model = Tea
     fields = [field.name for field in Tea._meta.fields if field.name != 'teaware']  # Exclude 'teaware' field from the form
     # success_url = '/teas/'  # Redirect to the tea index page after creation
+    
+    # This inherited method is called when a
+    # valid cat form is being submitted
+    def form_valid(self, form):
+        # Assign the logged in user (self.request.user)
+        form.instance.user = self.request.user  # form.instance is the cat
+        # Let the CreateView do its job as usual
+        return super().form_valid(form)
    
 class TeaUpdate(UpdateView):
     model = Tea

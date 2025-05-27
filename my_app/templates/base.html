@@ -24,11 +24,22 @@
     </div>
     <nav>
       <ul>
+        {% if user.is_authenticated %}
         <li><a href="{% url 'tea_index' %}">All Teas</a></li>
         <li><a href="{% url 'teaware-index' %}">All Teaware</a></li>
         <li><a href="{% url 'tea_create' %}">Add Tea</a></li>
         <li><a href="{% url 'teaware_create' %}">Add Teaware</a></li>
         <li><a href="{% url 'about' %}">About</a></li>
+        <li>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+          </form>
+        </li>
+        {% else %}
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'home' %}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
